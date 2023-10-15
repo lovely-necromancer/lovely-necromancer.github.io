@@ -1,77 +1,58 @@
-# Personal Portfolio 🔥
-> https://rajaprerak.github.io/
+# academic-minima
 
-:star: Star me on GitHub — it helps!
+*Academic-Minima is a Jekyll theme for academics*. It is based on Jekyll's default theme but has been tweaked to be more appropriate for a personal academic website.
 
-[![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://github.com/rajaprerak/rajaprerak.github.io/commits/master)
-[![Website shields.io](https://img.shields.io/badge/website-up-yellow)](http://rajaprerak.github.io/)
-[![Ask Me Anything !](https://img.shields.io/badge/ask%20me-linkedin-1abc9c.svg)](https://www.linkedin.com/in/rajaprerak/)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+![academic-minima theme preview](/screenshot.png)
 
-### Website Preview
-#### Home Page
-<img src="website_images/HomePage.gif" width="900">
+## Installation
 
+Add this line to your Jekyll site's Gemfile:
 
-#### About Page
-<img src="website_images/AboutPage.png" width="900">
+```ruby
+gem "academic-minima", git: "https://github.com/academicbio/academic-minima.git"
+```
 
+And add this line to your Jekyll site:
 
-#### Projects Page
-<img src="website_images/ProjectPage.png" width="900">
-  
+```yaml
+theme: academic-minima
+```
 
+And then execute:
 
-:star: Star me on GitHub — it helps!
+    $ bundle
+    
+Then add a `css/main.scss` file based on the following template, don't forget to include the frontmatter:
 
-## Features 📋
-⚡️ Fully Responsive\
-⚡️ Valid HTML5 & CSS3\
-⚡️ Typing animation using `Typed.js`\
-⚡️ Easy to modify
+```css
+---
+---
 
-## Installation & Deployment 📦
-- Clone the repository and modify the content of <b>index.html</b> 
-- Add or remove images from `assets/img/` directory as per your requirement.
-- Update the info of `projects` folder according to your need
-- Use [Github Pages](https://create-react-app.dev/docs/deployment/#github-pages) to create your own website.
-- To deploy your website, first you need to create github repository with name `<your-github-username>.github.io` and push the generated code to the `master` branch.
+@import "academic-minima";
+```
 
-## Sections 📚
-✔️ About\
-✔️ Interests\
-✔️ Education\
-✔️ Online Certification\
-✔️ Experience\
-✔️ Projects \
-✔️ Skills \
-✔️ Resume\
-✔️ Contact Info
+You can choose to override the [`_includes/head.html `](_includes/head.html) file to specify a custom style path.
 
+## Enabling Google Analytics
 
+To enable Google Anaytics, add the following lines to your Jekyll site:
 
-## Tools Used 🛠️
-* <b>GitHub Pages</b> - To host my static website (HTML, CSS, JS).
+```yaml
+  google_analytics: UA-NNNNNNNN-N
+```
 
-## Contributing 💡
-#### Step 1
+Google Analytics will only appear in production, i.e., `JEKYLL_ENV=production`
 
-- **Option 1**
-    - 🍴 Fork this repo!
+## Contributing
 
-- **Option 2**
-    - 👯 Clone this repo to your local machine.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jpallen/academic-minima. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+## Development
 
-#### Step 2
+To set up your environment to develop this theme, run `bundle install`.
 
-- **Build your code** 🔨🔨🔨
-
-#### Step 3
-
-- 🔃 Create a new pull request.
+To test your theme, run `bundle exec rake preview` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme and the contents of the `example/` directory. As you make modifications to your theme and to the example site, your site will regenerate and you should see the changes in the browser after a refresh.
 
 ## License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
