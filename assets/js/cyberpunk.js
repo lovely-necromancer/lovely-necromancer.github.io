@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Typed.js initialization
     const typed = new Typed("#typed", {
-      strings: ["a fan of CyberPunk", "a Zero-Knowledge Proofs Specialist", "a Blockchain Expert", "an Applied Cryptographer", "a Proud Member of Shinjitsu Labs"],
-      typeSpeed: 50,
+      strings: ["a Proud Member of Zero-Savvy", "a fan of CyberPunk", "a Blockchain Enthusiast", "an Applied Cryptographer"],
+      typeSpeed: 40,
       backSpeed: 30,
-      backDelay: 2000,
+      backDelay: 1000,
       loop: true,
     })
   
