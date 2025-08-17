@@ -196,6 +196,96 @@
       font-size: 1.2rem;
     }
 
+    /* Publications Section */
+    .publications-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .publication-item {
+      display: flex;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .publication-year {
+      flex-shrink: 0;
+      width: 60px;
+      font-weight: 600;
+      color: var(--accent-color);
+      font-size: 0.95rem;
+    }
+
+    .publication-content {
+      flex: 1;
+    }
+
+    .publication-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .publication-authors {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .publication-authors strong {
+      color: var(--primary-color);
+    }
+
+    .publication-venue {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+
+    .publication-citations {
+      font-size: 0.85rem;
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+
+    .view-more-publications {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .view-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .view-more-link:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    .view-more-link i {
+      font-size: 1.1rem;
+    }
+
     /* Resume Section */
     .resume-section {
       background: var(--surface);
@@ -415,6 +505,19 @@
       .timeline-content {
         margin-left: 1rem;
       }
+
+      .publication-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .publication-year {
+        text-align: center;
+      }
+
+      .view-more-publications {
+        margin-top: 2rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -435,6 +538,27 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 768px) {
+      .publication-item {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .publication-year {
+        width: auto;
+        font-size: 0.9rem;
+      }
+
+      .publication-title {
+        font-size: 1rem;
+      }
+
+      .publication-authors,
+      .publication-venue {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -445,7 +569,8 @@
         <a href="#" class="logo">Shahriar Ebrahimi</a>
         <ul class="nav-links" id="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#resume">Resume</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#timeline">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="mobile-nav-toggle" id="mobile-nav-toggle">
@@ -463,13 +588,13 @@
         <div class="about-header">
           <h1>Shahriar Ebrahimi</h1>
           <p class="subtitle">Applied Cryptographer & Researcher</p>
-          <p class="affiliation">Co-Founder at Zero-Savvy | Research Associate at Newcastle University</p>
+          <p class="affiliation">Co-Founder at Zero Savvy Ltd | Research Fellow at University of Warwick</p>
         </div>
 
         <div class="about-content">
           <img src="assets/img/profile-img.jpg" alt="Shahriar Ebrahimi" class="profile-image">
           <div class="about-text">
-            <p>I am a <strong>Co-Founder</strong> and <strong>Applied Cryptographer</strong> at <strong>Zero-Savvy</strong>. Prior to this, I was a <strong>PostDoc</strong> at <strong>Newcastle University</strong> in the UK and at <strong>IDEAS NCBR</strong> in Poland. I earned my <strong>Ph.D. in Computer Engineering</strong> from <strong>Sharif University of Technology</strong>.</p>
+            <p>I am a <strong>Co-Founder</strong> of <strong>Zero Savvy Ltd</strong> and a <strong>Research Fellow</strong> at <strong>University of Warwick</strong>.  Prior to this, I was a <strong>PostDoc</strong> at <strong>Newcastle University</strong> in the UK and at <strong>IDEAS NCBR</strong> in Poland. I earned my <strong>Ph.D. in Computer Engineering</strong> from <strong>Sharif University of Technology</strong> back in 2021.</p>
             
             <p>I have had the opportunity to lead blockchain projects in the cryptocurrency industry, where I worked on decentralized exchange systems and secure large-scale wallet implementations. My research focuses on practical applications of cryptographic protocols, including Zero-Knowledge Proofs (ZKP), Multi-Party Computation (MPC), and privacy-preserving machine learning.</p>
           </div>
@@ -496,12 +621,24 @@
       </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume-section">
+   
+
+    <section id="timeline" class="resume-section">
       <div class="container">
-        <h2 class="section-title">Career Timeline</h2>
+        <h2 class="section-title" style="margin-top: 4rem;">Career Timeline</h2>
         
         <div class="timeline">
+	        <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">July 2025 - Present</div>
+              <h3 class="timeline-title">Research Fellow</h3>
+              <div class="timeline-subtitle">University of Warwick, Coventry, UK</div>
+              <p class="timeline-desc">
+                Research focus: Federated and Privacy-Preserving Machine Learning
+              </p>
+            </div>
+          </div>
+
           <div class="timeline-item">
             <div class="timeline-content">
               <div class="timeline-date">January 2025 - June 2025</div>
@@ -517,7 +654,7 @@
             <div class="timeline-content current-position">
               <div class="timeline-date">April 2023 - Present</div>
               <h3 class="timeline-title">Co-Founder</h3>
-              <div class="timeline-subtitle">Zero-Savvy</div>
+              <div class="timeline-subtitle">Zero Savvy Ltd</div>
               <p class="timeline-desc">
                 Leading research and development in applied cryptography and privacy-preserving technologies.
               </p>
@@ -587,6 +724,120 @@
       </div>
     </section>
 
+     <!-- Resume Section -->
+    <section id="publications" class="resume-section">
+      <div class="container">
+        <h2 class="section-title">Publications</h2>
+        
+        <div class="publications-container">
+          <div class="publication-item">
+            <div class="publication-year">2025</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Provenance Detection for AI-Generated Images: Combining Perceptual Hashing, Homomorphic Encryption, and AI Detection Models</h3>
+              <div class="publication-authors">S Singhi, A Yadav, A Gupta, <strong>S Ebrahimi</strong>, P Hassanizadeh</div>
+              <div class="publication-venue">arXiv preprint arXiv:2503.11195</div>
+              <div class="publication-citations">1 citation</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2025</div>
+            <div class="publication-content">
+              <h3 class="publication-title">TrafficProof: Privacy-Preserving Reliable Traffic Information Sharing in Social Internet of Vehicles</h3>
+              <div class="publication-authors">S Dziembowski, <strong>S Ebrahimi</strong>, P Hassanizadeh, SK Mohanty</div>
+              <div class="publication-venue">Cryptology ePrint Archive</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2025</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Burn Your Vote: Decentralized and Publicly Verifiable Anonymous Voting at Scale</h3>
+              <div class="publication-authors">S Dziembowski, <strong>S Ebrahimi</strong>, H Habibi, P Hassanizadeh, P Toolabi</div>
+              <div class="publication-venue">Cryptology ePrint Archive</div>
+              <div class="publication-citations">1 citation</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2025</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Universal Channel Rebalancing: Flexible Coin Shifting in Payment Channel Networks</h3>
+              <div class="publication-authors">S Dziembowski, <strong>S Ebrahimi</strong>, O Gavhane, SK Mohanty</div>
+              <div class="publication-venue">Cryptology ePrint Archive</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2025</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Towards Trustless Provenance: A Privacy-Preserving Framework for On-chain Media Verification</h3>
+              <div class="publication-authors">P Mikołajczyk, P Hassanizadeh, <strong>S Ebrahimi</strong></div>
+              <div class="publication-venue">Cryptology ePrint Archive</div>
+              <div class="publication-citations">1 citation</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2024</div>
+            <div class="publication-content">
+              <h3 class="publication-title">From Interaction to Independence: zkSNARKs for Transparent and Non-Interactive Remote Attestation</h3>
+              <div class="publication-authors"><strong>S Ebrahimi</strong>, P Hassanizadeh</div>
+              <div class="publication-venue">Network and Distributed System Security Symposium (NDSS)</div>
+              <div class="publication-citations">5 citations</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2024</div>
+            <div class="publication-content">
+              <h3 class="publication-title">VIMz: Private proofs of image manipulation using folding-based zkSNARKs</h3>
+              <div class="publication-authors">S Dziembowski, <strong>S Ebrahimi</strong>, P Hassanizadeh</div>
+              <div class="publication-venue">Cryptology ePrint Archive</div>
+              <div class="publication-citations">16 citations</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2022</div>
+            <div class="publication-content">
+              <h3 class="publication-title">High-speed post-quantum cryptoprocessor based on RISC-V architecture for IoT</h3>
+              <div class="publication-authors">S Hadayeghparast, S Bayat-Sarmadi, <strong>S Ebrahimi</strong></div>
+              <div class="publication-venue">IEEE Internet of Things Journal 9 (17), 15839-15846</div>
+              <div class="publication-citations">16 citations</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2021</div>
+            <div class="publication-content">
+              <h3 class="publication-title">Lightweight fuzzy extractor based on LPN for device and biometric authentication in IoT</h3>
+              <div class="publication-authors"><strong>S Ebrahimi</strong>, S Bayat-Sarmadi</div>
+              <div class="publication-venue">IEEE Internet of Things Journal 8 (13), 10706-10713</div>
+              <div class="publication-citations">29 citations</div>
+            </div>
+          </div>
+
+          <div class="publication-item">
+            <div class="publication-year">2021</div>
+            <div class="publication-content">
+              <h3 class="publication-title">RC-RNN: Reconfigurable Cache Architecture for Storage Systems Using Recurrent Neural Networks</h3>
+              <div class="publication-authors"><strong>S Ebrahimi</strong>, R Salkhordeh, SA Osia, A Taheri, HR Rabiee, H Asadi</div>
+              <div class="publication-venue">IEEE Transactions on Emerging Topics in Computing 10 (3), 1492-1506</div>
+              <div class="publication-citations">10 citations</div>
+            </div>
+          </div>
+
+          <div class="view-more-publications">
+            <a href="https://scholar.google.com/citations?user=ZphMzM4AAAAJ&hl=en" target="_blank" class="view-more-link">
+              <i class="ai ai-google-scholar"></i>
+              View all publications on Google Scholar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
       <div class="container">
@@ -624,10 +875,10 @@
                   <i class="ai ai-google-scholar"></i>
                   <span>Scholar</span>
                 </a>
-                <a href="https://orcid.org/0000-0003-0344-921X" target="_blank" class="contact-link">
+                <!-- <a href="https://orcid.org/0000-0003-0344-921X" target="_blank" class="contact-link">
                   <i class="ai ai-orcid"></i>
                   <span>ORCID</span>
-                </a>
+                </a> -->
                 <a href="https://github.com/lovely-necromancer" target="_blank" class="contact-link">
                   <i class="bx bxl-github"></i>
                   <span>GitHub</span>
