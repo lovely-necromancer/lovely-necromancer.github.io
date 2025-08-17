@@ -12,31 +12,437 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/academicons/css/academicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/typed.js/typed.umd.js" rel="stylesheet">
+  <!-- Icon Libraries -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/cyberpunk.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #34495e;
+      --accent-color: #3498db;
+      --text-primary: #2c3e50;
+      --text-secondary: #7f8c8d;
+      --background: #ffffff;
+      --surface: #f8f9fa;
+      --border: #e9ecef;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--background);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .header {
+      background: var(--background);
+      box-shadow: 0 2px 10px var(--shadow);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 80px;
+      padding: 2rem 0;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 3rem 0;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .about-header h1 {
+      font-family: 'Crimson Text', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-header .subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .about-header .affiliation {
+      font-size: 1rem;
+      color: var(--accent-color);
+      font-weight: 500;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .about-text strong {
+      color: var(--primary-color);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
+    }
+
+    /* Resume Section */
+    .resume-section {
+      background: var(--surface);
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-family: 'Crimson Text', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.5rem 0;
+      border-left: 2px solid var(--border);
+      margin-left: 1rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 2rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent-color);
+      border-radius: 50%;
+    }
+
+    .timeline-content {
+      margin-left: 2rem;
+      background: var(--background);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .current-position {
+      border: 2px solid var(--accent-color);
+      background: rgba(52, 152, 219, 0.05);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 3rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .contact-text h4 {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-text p {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--primary-color);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-content {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-credits {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .about-header h1 {
+        font-size: 2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .profile-image {
+        margin: 0 auto;
+      }
+
+      .social-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .social-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .timeline-item {
+        margin-left: 0.5rem;
+      }
+
+      .timeline-content {
+        margin-left: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 15px;
+      }
+
+      .about-header h1 {
+        font-size: 1.75rem;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Background Effects -->
-  <div class="cyber-bg"></div>
-  <div class="grid-overlay"></div>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-
   <!-- Header -->
   <header class="header">
     <div class="container">
       <nav class="nav">
-        <a href="#" class="logo">S.Ebrahimi</a>
+        <a href="#" class="logo">Shahriar Ebrahimi</a>
         <ul class="nav-links" id="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#resume">Resume</a></li>
@@ -49,229 +455,150 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title glitch-text" data-text="Shahriar Ebrahimi">Shahriar Ebrahimi</h1>
-        <p class="hero-subtitle">I'm <span class="hero-typed" id="typed"></span></p>
-        <a href="#about" class="hero-cta">Initialize</a>
-      </div>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-header">
+          <h1>Shahriar Ebrahimi</h1>
+          <p class="subtitle">Applied Cryptographer & Researcher</p>
+          <p class="affiliation">Co-Founder at Zero-Savvy | Research Associate at Newcastle University</p>
+        </div>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="terminal-dot terminal-dot-red"></span>
-            <span class="terminal-dot terminal-dot-yellow"></span>
-            <span class="terminal-dot terminal-dot-green"></span>
-          </div>
-          <div class="terminal-title">about.sh</div>
-        </div>
-        <div class="terminal-content">
-          <div class="terminal-line">
-            <span class="terminal-prompt">$</span> ./about.sh
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Loading profile data...
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Profile: Shahriar Ebrahimi
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Status: Founding Member @ <a href="https://github.com/zero-savvy/" target="_blank" style="color: green; font-weight: bold;">Zero-Savvy</a>
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Location: United Kingdom
-          </div>
-        </div>
-      </div>
-
-      <div class="about">
-        <div class="about-image">
-          <img src="assets/img/profile-img.jpg" alt="Shahriar Ebrahimi">
-        </div>
         <div class="about-content">
-          <h2>About Me</h2>
-          <p>I'm a <strong>Co-Founder</strong> and <strong>Applied Cryptographer</strong> at <strong>Zero-Savvy</strong>. Prior to this, I was a <strong>PostDoc</strong> at <strong>Newcastle University</strong> in UK and at <strong>IDEAS NCBR</strong> in Poland. I earned my <strong>Ph.D. in Computer Engineering</strong> from <strong>Sharif University of Technology</strong>. I had the opportunity to lead blockchain projects at cryptocurrency industry, where I worked on decentralized exchange systems and secure large-scale wallet implementations.</p>
+          <img src="assets/img/profile-img.jpg" alt="Shahriar Ebrahimi" class="profile-image">
+          <div class="about-text">
+            <p>I am a <strong>Co-Founder</strong> and <strong>Applied Cryptographer</strong> at <strong>Zero-Savvy</strong>. Prior to this, I was a <strong>PostDoc</strong> at <strong>Newcastle University</strong> in the UK and at <strong>IDEAS NCBR</strong> in Poland. I earned my <strong>Ph.D. in Computer Engineering</strong> from <strong>Sharif University of Technology</strong>.</p>
+            
+            <p>I have had the opportunity to lead blockchain projects in the cryptocurrency industry, where I worked on decentralized exchange systems and secure large-scale wallet implementations. My research focuses on practical applications of cryptographic protocols, including Zero-Knowledge Proofs (ZKP), Multi-Party Computation (MPC), and privacy-preserving machine learning.</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://scholar.google.com/citations?user=ZphMzM4AAAAJ&hl=en" target="_blank" class="social-link">
+            <i class="ai ai-google-scholar"></i>
+            <span>Google Scholar</span>
+          </a>
+          <a href="https://github.com/lovely-necromancer" target="_blank" class="social-link">
+            <i class="bx bxl-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://orcid.org/0000-0003-0344-921X" target="_blank" class="social-link">
+            <i class="ai ai-orcid"></i>
+            <span>ORCID</span>
+          </a>
+          <a href="https://linkedin.com/in/shahriar-ebrahimi" target="_blank" class="social-link">
+            <i class="bx bxl-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume-section">
+      <div class="container">
+        <h2 class="section-title">Career Timeline</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">January 2025 - June 2025</div>
+              <h3 class="timeline-title">Research Associate</h3>
+              <div class="timeline-subtitle">Newcastle University, Newcastle, UK</div>
+              <p class="timeline-desc">
+                Research focus: Software Bill of Materials (SBOM), Verifiable Computation (VC)
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content current-position">
+              <div class="timeline-date">April 2023 - Present</div>
+              <h3 class="timeline-title">Co-Founder</h3>
+              <div class="timeline-subtitle">Zero-Savvy</div>
+              <p class="timeline-desc">
+                Leading research and development in applied cryptography and privacy-preserving technologies.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">March 2023 - January 2025</div>
+              <h3 class="timeline-title">Postdoctoral Researcher</h3>
+              <div class="timeline-subtitle">IDEAS NCBR, Warsaw, Poland</div>
+              <p class="timeline-desc">
+                Research focus: Practical Zero-Knowledge Proofs (ZKP), Privacy-preserving machine learning, Verifiable ASICs, Authenticity of Digital Media
+              </p>
+            </div>
+          </div>
           
-          <div class="about-links">
-            <h3>Connect With Me</h3>
-            <div class="social-links">
-              <a href="https://scholar.google.com/citations?user=ZphMzM4AAAAJ&hl=en" target="_blank" class="social-link">
-                <i class="ai ai-google-scholar"></i>
-                <span>Google Scholar</span>
-              </a>
-              <a href="https://github.com/lovely-necromancer" target="_blank" class="social-link">
-                <i class="bx bxl-github"></i>
-                <span>GitHub</span>
-              </a>
-              <a href="https://orcid.org/0000-0003-0344-921X" target="_blank" class="social-link">
-                <i class="ai ai-orcid"></i>
-                <span>ORCID</span>
-              </a>
-              <a href="https://linkedin.com/in/shahriar-ebrahimi" target="_blank" class="social-link">
-                <i class="bx bxl-linkedin"></i>
-                <span>LinkedIn</span>
-              </a>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">April 2021 - March 2023</div>
+              <h3 class="timeline-title">Blockchain Tech-Lead</h3>
+              <div class="timeline-subtitle">Nobitex Crypto-Exchange</div>
+              <p class="timeline-desc">
+                Led development of Orderbook Decentralized Exchange (DEX), Smart Wallets and gas optimization, Scale-up & automation in Hot/Cold wallet systems
+              </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">December 2020 - April 2021</div>
+              <h3 class="timeline-title">Cryptographic Engineer</h3>
+              <div class="timeline-subtitle">Nobitex Crypto-Exchange</div>
+              <p class="timeline-desc">
+                Design and implementation of Multi-Sig Cold wallet systems, Large-scale Hot/Cold wallet systems
+              </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">September 2017 - June 2021</div>
+              <h3 class="timeline-title">Ph.D. in Computer Engineering</h3>
+              <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
+              <p class="timeline-desc">
+                Thesis: Efficient Implementation of Lattice-based Cryptography based on Learning with Errors Problem
+              </p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">September 2015 - June 2017</div>
+              <h3 class="timeline-title">M.Sc. in Computer Architecture</h3>
+              <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">September 2010 - June 2015</div>
+              <h3 class="timeline-title">B.Sc. in Information Technology Engineering</h3>
+              <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Resume Section -->
-  <section id="resume" class="resume section">
-    <div class="container">
-      <h2 class="resume-title">Career Timeline</h2>
-      
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="terminal-dot terminal-dot-red"></span>
-            <span class="terminal-dot terminal-dot-yellow"></span>
-            <span class="terminal-dot terminal-dot-green"></span>
-          </div>
-          <div class="terminal-title">career.sh</div>
-        </div>
-        <div class="terminal-content">
-          <div class="terminal-line">
-            <span class="terminal-prompt">$</span> ./career_timeline.sh
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Loading career data...
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Generating timeline...
-          </div>
-        </div>
-      </div>
-      
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Jan. 2025 - Jun. 2025</div>
-            <h3 class="timeline-title">Research Associate</h3>
-            <div class="timeline-subtitle">Newcastle University, Newcastle, UK</div>
-            <p class="timeline-desc">
-              Research focus: Software Bill of Materials (SBOM), Verifiable Computation (VC)
-            </p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content" style="background-color: #051b1a; border: 1.5px solid #46f3df; border-radius: 5px;">
-            <div class="timeline-date">Apr. 2023 - Present</div>
-            <h3 class="timeline-title">Co-Founder / Member</h3>
-            <div class="timeline-subtitle">Zero-Savvy</div>
-            <p class="timeline-desc">
-              Freedom, Freedom, and Freedom . . . 
-            </p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Mar. 2023 - Jan. 2025</div>
-            <h3 class="timeline-title">Postdoctoral Researcher</h3>
-            <div class="timeline-subtitle">IDEAS NCBR, Warsaw, Poland</div>
-            <p class="timeline-desc">
-              Research focus: Practical Zero-Knowledge Proofs (ZKP), Privacy-preserving machine learning, Verifiable ASICs, Authenticity of Digital Media
-            </p>
-          </div>
-        </div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
         
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Apr. 2021 - Mar. 2023</div>
-            <h3 class="timeline-title">Blockchain Tech-Lead</h3>
-            <div class="timeline-subtitle">Nobitex Crypto-Exchange</div>
-            <p class="timeline-desc">
-              Led development of Orderbook Decentralized Exchange (DEX), Smart Wallets and gas optimization, Scale-up & automation in Hot/Cold wallet systems
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Dec. 2020 - Apr. 2021</div>
-            <h3 class="timeline-title">Cryptographic Engineer</h3>
-            <div class="timeline-subtitle">Nobitex Crypto-Exchange</div>
-            <p class="timeline-desc">
-              Design and implementation of Multi-Sig Cold wallet systems, Large-scale Hot/Cold wallet systems
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Sept. 2017 - June 2021</div>
-            <h3 class="timeline-title">Ph.D. in Computer Engineering</h3>
-            <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
-            <p class="timeline-desc">
-              Thesis: Efficient Implementation of Lattice-based Cryptography based on Learning with Errors Problem
-            </p>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Sept. 2015 - June 2017</div>
-            <h3 class="timeline-title">M.Sc. in Computer Architecture</h3>
-            <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
-          </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">Sept. 2010 - June 2015</div>
-            <h3 class="timeline-title">B.Sc. in Information Technology Engineering</h3>
-            <div class="timeline-subtitle">Sharif University of Technology, Tehran, Iran</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact section">
-    <div class="container">
-      <h2 class="contact-title">Contact</h2>
-      
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="terminal-dot terminal-dot-red"></span>
-            <span class="terminal-dot terminal-dot-yellow"></span>
-            <span class="terminal-dot terminal-dot-green"></span>
-          </div>
-          <div class="terminal-title">contact.sh</div>
-        </div>
-        <div class="terminal-content">
-          <div class="terminal-line">
-            <span class="terminal-prompt">$</span> ./establish_connection.sh
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Initializing secure channel...
-          </div>
-          <div class="terminal-line">
-            <span class="terminal-prompt">></span> Connection established. You may proceed.
-          </div>
-        </div>
-      </div>
-      
-      <div class="contact-container">
-        <div class="contact-info">
+        <div class="contact-grid">
           <div class="contact-item">
             <div class="contact-icon">
               <i class="bi bi-envelope"></i>
             </div>
             <div class="contact-text">
               <h4>Email</h4>
-              <!-- <p>sh.ebrahimi92 [at] gmail.com</p> -->
               <p>lovely_necromancer [at] proton.me</p>
             </div>
           </div>
@@ -291,19 +618,19 @@
               <i class="bi bi-link-45deg"></i>
             </div>
             <div class="contact-text">
-              <h4>Profiles</h4>
+              <h4>Academic Profiles</h4>
               <div class="contact-links">
                 <a href="https://scholar.google.com/citations?user=ZphMzM4AAAAJ&hl=en" target="_blank" class="contact-link">
                   <i class="ai ai-google-scholar"></i>
-                  <span>Google Scholar</span>
-                </a>
-                <a href="https://github.com/lovely-necromancer" target="_blank" class="contact-link">
-                  <i class="bx bxl-github"></i>
-                  <span>GitHub</span>
+                  <span>Scholar</span>
                 </a>
                 <a href="https://orcid.org/0000-0003-0344-921X" target="_blank" class="contact-link">
                   <i class="ai ai-orcid"></i>
                   <span>ORCID</span>
+                </a>
+                <a href="https://github.com/lovely-necromancer" target="_blank" class="contact-link">
+                  <i class="bx bxl-github"></i>
+                  <span>GitHub</span>
                 </a>
                 <a href="https://linkedin.com/in/shahriar-ebrahimi" target="_blank" class="contact-link">
                   <i class="bx bxl-linkedin"></i>
@@ -314,8 +641,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -327,23 +654,34 @@
         <li><a href="https://linkedin.com/in/shahriar-ebrahimi"><i class="bx bxl-linkedin"></i></a></li>
       </ul>
       <div class="footer-content">
-        &copy; Copyright <strong><span>Shahriar Ebrahimi</span></strong>
+        &copy; 2025 <strong>Shahriar Ebrahimi</strong>
       </div>
       <div class="footer-credits">
-        Original template by BootstrapMade | Cyberpunk redesign 2025
+        Academic Portfolio Design
       </div>
     </div>
   </footer>
 
-  <!-- Back to top button -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script>
+    // Simple mobile navigation toggle
+    document.getElementById('mobile-nav-toggle').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/cyberpunk.js"></script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
